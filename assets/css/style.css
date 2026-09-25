@@ -48,17 +48,13 @@ hr {
 
 nav.mono { margin: 0 0 0.2em; }
 
-.photo {
+.patch {
   float: right;
-  width: 7em;
-  height: 9em;
-  margin: 0 0 0.6em 1em;
-  border: 1px solid #444;
-  background: #ddd;
-  color: #666;
-  font: 10px/9em "Courier New", Courier, monospace;
-  text-align: center;
-  transform: rotate(1.2deg);
+  width: 8.4em;
+  height: auto;
+  margin: -0.5em -0.6em 0.3em 0.8em;
+  transform: rotate(11deg);
+  mix-blend-mode: multiply;
 }
 
 .meta { margin: 0 0 1em; }
@@ -72,23 +68,6 @@ th, td {
   vertical-align: top;
   padding: 0.15em 1.2em 0.15em 0;
   font-weight: normal;
-}
-
-input, textarea {
-  font: 13px "Courier New", Courier, monospace;
-  width: 100%;
-  max-width: 28em;
-  border: 1px solid #888;
-  background: #fff;
-  padding: 2px 4px;
-}
-
-textarea { height: 7em; }
-
-input[type="submit"] {
-  width: auto;
-  font: 13px Times, "Times New Roman", serif;
-  padding: 1px 8px;
 }
 
 footer {
