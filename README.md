@@ -3,7 +3,8 @@
 Static three-page portfolio. White page, Times, looks like a scanned report.
 
 - `index.html` — home
-- `projects.html` — project list
+- `projects.html` — project list (titles link through)
+- `projects/01.html` … `06.html` — one report per project
 - `contact.html` — contact details
 
 No build step.

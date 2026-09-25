@@ -67,8 +67,47 @@ nav.mono { margin: 0 0 0.2em; }
 
 .meta { margin: 0 0 1em; }
 
-.entries { margin: 0; padding: 0; list-style: none; }
-.entries li { margin: 0 0 1em; }
+ul.entries {
+  margin: 0.4em 0 1.2em 1.25em;
+  padding: 0;
+}
+ul.entries li { margin: 0 0 0.75em; }
+ul.entries li p { margin: 0.15em 0 0; }
+
+.facts { margin: 0.4em 0 1.2em; }
+.facts th { width: 8em; color: #444; }
+
+.plates {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9em 1.1em;
+  margin: 1em 0 1.4em;
+}
+
+figure { margin: 0; }
+
+.plate {
+  width: 14em;
+  height: 10em;
+  border: 1px solid #444;
+  background: #e8e8e8;
+  color: #666;
+  font: 11px/10em "Courier New", Courier, monospace;
+  text-align: center;
+}
+
+figure img {
+  display: block;
+  max-width: 16em;
+  border: 1px solid #444;
+}
+
+figcaption {
+  font-size: 12px;
+  font-style: italic;
+  margin-top: 0.25em;
+  max-width: 16em;
+}
 
 table { border-collapse: collapse; }
 th, td {
