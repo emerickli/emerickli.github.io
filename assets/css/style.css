@@ -18,7 +18,7 @@ a:visited { color: #551a8b; }
 h1 {
   font-size: 1.35em;
   font-weight: normal;
-  margin: 0.6em 0 0.2em;
+  margin: 0 0 0.2em;
 }
 
 h2 {
@@ -48,12 +48,20 @@ hr {
 
 nav.mono { margin: 0 0 0.2em; }
 
+.lede {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1em;
+  margin: 0.6em 0 0;
+}
+
 .patch {
-  float: right;
+  display: block;
   width: 8.4em;
   height: auto;
-  margin: -0.5em -0.6em 0.3em 0.8em;
-  transform: rotate(11deg);
+  flex: 0 0 8.4em;
+  margin: 0;
   mix-blend-mode: multiply;
 }
 

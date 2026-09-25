@@ -4,7 +4,7 @@ Static three-page portfolio. White page, Times, looks like a scanned report.
 
 - `index.html` — home
 - `projects.html` — project list
-- `contact.html` — contact / mailto form
+- `contact.html` — contact details
 
 No build step.
 
