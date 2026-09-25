@@ -75,9 +75,9 @@ img {
 
 .patch {
   display: block;
-  width: 8.4em;
+  width: 11em;
   height: auto;
-  flex: 0 0 8.4em;
+  flex: 0 0 11em;
   margin: 0;
   mix-blend-mode: multiply;
 }
@@ -203,7 +203,7 @@ body.missing {
   }
 
   .patch {
-    width: 6.5em;
+    width: 8.2em;
     flex: 0 0 auto;
   }
 
