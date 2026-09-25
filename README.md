@@ -9,10 +9,14 @@ Static three-page portfolio. White page, Times, looks like a scanned report.
 No build step.
 
 ```bash
-python3 -m http.server 47291
+python3 serve.py
 ```
 
 Open http://localhost:47291
+
+Unknown paths (`/asdf`, `/not-a-page`) return `404.html` — the spinning
+ouroboros. GitHub Pages does the same automatically from the `404.html`
+file at the repo root.
 
 Intended for `emerickli.github.io` (GitHub Pages, `main` branch root).
 Anything in `[ brackets ]` is a placeholder.
