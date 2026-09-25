@@ -1,28 +1,18 @@
-# Kai Emerick Li — Report
+# Kai Emerick Li
 
-A static three-page portfolio, set as a typed letter-size report on a desk.
+Static three-page portfolio. White page, Times, looks like a scanned report.
 
-- `index.html` — cover / summary, with a paper-clipped portrait placeholder
-- `projects.html` — numbered project list
-- `contact.html` — coordinates and a mailto form
+- `index.html` — home
+- `projects.html` — project list
+- `contact.html` — contact / mailto form
 
-Plain HTML and CSS. No build step.
-
-## Run locally
+No build step.
 
 ```bash
 python3 -m http.server 47291
 ```
 
-Then open http://localhost:47291
+Open http://localhost:47291
 
-## GitHub Pages
-
-This is meant to live at `emerickli.github.io` and be served from the `main`
-branch root. Push to `main`; Pages will pick it up. `.nojekyll` is included so
-GitHub does not run Jekyll.
-
-## Fill in later
-
-Anything in `[ brackets ]` is a placeholder — titles, dates, contact, the
-portrait box on the first page.
+Intended for `emerickli.github.io` (GitHub Pages, `main` branch root).
+Anything in `[ brackets ]` is a placeholder.
