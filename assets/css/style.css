@@ -1,15 +1,22 @@
 /* kai emerick li
    white page. times. looks like it was scanned once and uploaded. */
 
-html { background: #fff; }
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  background: #fff;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
 
 body {
   margin: 1.5em auto;
-  max-width: 38em;
-  padding: 0 1.2em 3em;
+  max-width: 40em;
+  padding: 0 1.4em 3em;
   background: #fff;
   color: #111;
-  font: 13px/1.55 Times, "Times New Roman", Times, serif;
+  font: 17px/1.55 Times, "Times New Roman", Times, serif;
+  overflow-wrap: break-word;
 }
 
 a { color: #00e; }
@@ -43,10 +50,15 @@ hr {
 
 .mono {
   font-family: "Courier New", Courier, monospace;
-  font-size: 12px;
+  font-size: 0.88em;
 }
 
 nav.mono { margin: 0 0 0.2em; }
+
+nav a {
+  display: inline-block;
+  padding: 0.35em 0.1em;
+}
 
 .lede {
   display: flex;
@@ -54,6 +66,11 @@ nav.mono { margin: 0 0 0.2em; }
   justify-content: space-between;
   gap: 1em;
   margin: 0.6em 0 0;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
 }
 
 .patch {
@@ -74,7 +91,7 @@ ul.entries {
 ul.entries li { margin: 0 0 0.75em; }
 ul.entries li p { margin: 0.15em 0 0; }
 
-.facts { margin: 0.4em 0 1.2em; }
+.facts { margin: 0.4em 0 1.2em; width: 100%; }
 .facts th { width: 8em; color: #444; }
 
 .plates {
@@ -87,29 +104,33 @@ ul.entries li p { margin: 0.15em 0 0; }
 figure { margin: 0; }
 
 .plate {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 14em;
+  max-width: 100%;
   height: 10em;
   border: 1px solid #444;
   background: #e8e8e8;
   color: #666;
-  font: 11px/10em "Courier New", Courier, monospace;
+  font: 0.8em/1 "Courier New", Courier, monospace;
   text-align: center;
 }
 
 figure img {
   display: block;
-  max-width: 16em;
+  max-width: min(16em, 100%);
   border: 1px solid #444;
 }
 
 figcaption {
-  font-size: 12px;
+  font-size: 0.88em;
   font-style: italic;
   margin-top: 0.25em;
-  max-width: 16em;
+  max-width: min(16em, 100%);
 }
 
-table { border-collapse: collapse; }
+table { border-collapse: collapse; width: 100%; }
 th, td {
   text-align: left;
   vertical-align: top;
@@ -120,7 +141,7 @@ th, td {
 footer {
   clear: both;
   margin-top: 2.5em;
-  font-size: 12px;
+  font-size: 0.88em;
 }
 
 body.missing {
@@ -162,6 +183,54 @@ body.missing {
 
 @media (prefers-reduced-motion: reduce) {
   .ouro img { animation: none; }
+}
+
+@media (max-width: 40em) {
+  body {
+    margin: 1em auto;
+    padding: 0 1em 2.4em;
+  }
+
+  body.missing {
+    margin: 0;
+    padding: 0;
+  }
+
+  .lede {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.8em;
+  }
+
+  .patch {
+    width: 6.5em;
+    flex: 0 0 auto;
+  }
+
+  table, .facts { display: block; }
+  .facts th { width: auto; }
+
+  tr, th, td { display: block; }
+  th {
+    color: #444;
+    padding: 0.55em 0 0;
+  }
+  td { padding: 0.05em 0 0.15em; }
+  tr:first-child th { padding-top: 0; }
+
+  .plates {
+    flex-direction: column;
+    gap: 1em;
+  }
+
+  .plates figure,
+  .plate {
+    width: 100%;
+  }
+
+  .plate { height: 11em; }
+
+  .ouro span { font-size: 3.4rem; }
 }
 
 /* faint photocopy grain — almost not there */
