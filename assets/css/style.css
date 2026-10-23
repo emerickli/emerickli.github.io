@@ -145,7 +145,7 @@ a:focus-visible,
   background-color: rgba(4, 6, 12, 0.82);
   background-image: none;
   border-color: var(--glow, #9fd8e8);
-  box-shadow: inset 0 0 18px var(--glow, #9fd8e8);
+  box-shadow: inset 0 0 28px var(--glow, #9fd8e8);
 }
 
 .sign {
@@ -157,8 +157,9 @@ a:focus-visible,
   object-fit: contain;
   pointer-events: none;
   filter:
-    drop-shadow(0 0 8px var(--glow, #fff))
-    drop-shadow(0 0 22px var(--glow, #fff));
+    drop-shadow(0 0 5px #fff)
+    drop-shadow(0 0 14px var(--glow, #fff))
+    drop-shadow(0 0 32px var(--glow, #fff));
 }
 .top { transform: rotateX(90deg) translateZ(calc(var(--h) / 2)); }
 .bottom { transform: rotateX(-90deg) translateZ(calc(var(--h) / 2)); }
