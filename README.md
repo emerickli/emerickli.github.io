@@ -1,23 +1,19 @@
 # Kai Emerick Li
 
-Static three-page portfolio. White page, Times, looks like a scanned report.
+Static portfolio. A wireframe city behind full-screen bands.
 
 - `index.html` — home
-- `projects.html` — project list (titles link through)
-- `projects/01.html` … `06.html` — one report per project
-- `contact.html` — contact details
+- `projects.html` — work
+- `projects/01.html` — JOI
+- `contact.html` — contact
+- `404.html`
 
-No build step.
+No build step. No PHP.
 
 ```bash
 python3 serve.py
 ```
 
-Open http://localhost:47291
+Open http://127.0.0.1:47291
 
-Unknown paths (`/asdf`, `/not-a-page`) return `404.html` — the spinning
-ouroboros. GitHub Pages does the same automatically from the `404.html`
-file at the repo root.
-
-Intended for `emerickli.github.io` (GitHub Pages, `main` branch root).
-Anything in `[ brackets ]` is a placeholder.
+`[ brackets ]` are words that are not written yet. GitHub Pages serves `404.html` for unknown paths. The local server does the same.
