@@ -8,22 +8,69 @@
   <script defer>
   (function () {
     var dur = 90000;
-    var key = "city-spin-start";
+    var runKey = "city-spin-run";
+    var startKey = "city-spin-start";
+    var offsetKey = "city-spin-offset";
+    var root = document.documentElement;
+    function place(offset) {
+      var turn = ((offset % dur) / dur) * 360;
+      root.style.setProperty("--spin-angle", turn.toFixed(3));
+      root.style.setProperty("--spin-delay", (-(offset % dur) / 1000) + "s");
+    }
     try {
-      var now = Date.now();
-      var start = Number(sessionStorage.getItem(key));
-      if (!start) {
-        start = now;
-        sessionStorage.setItem(key, String(start));
+      var running = sessionStorage.getItem(runKey) === "1";
+      var offset = Number(sessionStorage.getItem(offsetKey)) || 0;
+      if (running) {
+        var start = Number(sessionStorage.getItem(startKey));
+        if (!start) {
+          start = Date.now();
+          sessionStorage.setItem(startKey, String(start));
+        }
+        offset = (Date.now() - start) % dur;
+        root.classList.add("playing");
       }
-      var elapsed = (now - start) % dur;
-      document.documentElement.style.setProperty("--spin-delay", (-elapsed / 1000) + "s");
+      place(offset);
     } catch (err) {}
+
+    document.addEventListener("DOMContentLoaded", function () {
+    var box = document.getElementById("hold");
+    if (!box) return;
+    box.checked = !root.classList.contains("playing");
+    box.addEventListener("change", function () {
+        if (box.checked) {
+          try {
+            var start = Number(sessionStorage.getItem(startKey)) || Date.now();
+            var offset = (Date.now() - start) % dur;
+            sessionStorage.setItem(offsetKey, String(offset));
+            sessionStorage.setItem(runKey, "0");
+            place(offset);
+          } catch (err) {}
+          root.classList.remove("playing");
+        } else {
+          try {
+            var held = Number(sessionStorage.getItem(offsetKey)) || 0;
+            sessionStorage.setItem(startKey, String(Date.now() - held));
+            sessionStorage.setItem(runKey, "1");
+            place(held);
+          } catch (err) {}
+          root.classList.add("playing");
+        }
+      });
+    });
+
+    function reveal() {
+      document.body.classList.remove("booting");
+    }
+    if (document.readyState === "complete") reveal();
+    else window.addEventListener("load", reveal);
+    window.setTimeout(reveal, 2200);
   })();
   </script>
   <link rel="stylesheet" href="/assets/css/style.css" />
+  <noscript><style>.veil{display:none}</style></noscript>
 </head>
-<body>
+<body class="booting">
+<div class="veil" aria-hidden="true"></div>
 <div class="sky" aria-hidden="true">
   <div class="stage">
     <div class="world">
@@ -69,7 +116,7 @@
     <a href="/contact.html" aria-current="page">Contact</a>
   </nav>
 <div class="hold">
-  <input id="hold" type="checkbox">
+  <input id="hold" type="checkbox" checked>
   <label for="hold"><span class="say-pause">Pause</span><span class="say-play">Play</span></label>
 </div>
 </header>
