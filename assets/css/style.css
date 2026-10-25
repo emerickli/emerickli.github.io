@@ -68,6 +68,12 @@ a:focus-visible,
   transform: scale(1.28);
 }
 
+/* Same framing as the reference window. Height drives size so a taller or fullscreen desktop does not drop the skyline. */
+@media (min-width: 46.01rem) {
+  .stage { perspective: calc(1400px * 100vh / 790px); }
+  .world { transform: scale(calc(1.28 * 100vh / 790px)); }
+}
+
 .spin {
   position: absolute;
   left: 0;
