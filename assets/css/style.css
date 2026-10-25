@@ -80,6 +80,7 @@ a:focus-visible,
   top: 0;
   width: 0;
   height: 0;
+  transform-origin: 0 0;
   transform-style: preserve-3d;
   animation: drift 90s linear infinite;
   animation-delay: var(--spin-delay, 0s);
@@ -133,6 +134,7 @@ body.booting .veil {
 
 .b {
   position: absolute;
+  left: calc(var(--w) / -2);
   width: var(--w);
   height: var(--h);
   transform-style: preserve-3d;
