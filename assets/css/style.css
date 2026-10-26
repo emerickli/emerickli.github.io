@@ -200,7 +200,7 @@ body.booting .veil {
 
 .topbar {
   position: fixed;
-  z-index: 5;
+  z-index: 6;
   top: 0;
   left: 0;
   right: 0;
@@ -242,10 +242,40 @@ nav a {
 
 nav a[aria-current="page"] { text-decoration-thickness: 3px; }
 
-.page { position: relative; z-index: 1; }
+.page { position: relative; z-index: 5; }
+
+/* Fixed to the viewport, inside the page layer, so a drag at the end cannot lift it off the towers. */
+.page::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    100deg,
+    rgba(7, 7, 8, 0.92) 0%,
+    rgba(7, 7, 8, 0.78) 38%,
+    rgba(7, 7, 8, 0.28) 68%,
+    rgba(7, 7, 8, 0.12) 100%
+  );
+}
+
+body:has(.reel) .page::before {
+  background: linear-gradient(
+    100deg,
+    rgba(7, 7, 8, 0.94) 0%,
+    rgba(7, 7, 8, 0.78) 42%,
+    rgba(7, 7, 8, 0.22) 72%,
+    rgba(7, 7, 8, 0.05) 100%
+  );
+}
+
+.hero, .band, .poster, .reel {
+  position: relative;
+  z-index: 1;
+}
 
 .hero, .band, .poster {
-  position: relative;
   min-height: 100dvh;
   display: flex;
   flex-direction: column;
@@ -256,7 +286,9 @@ nav a[aria-current="page"] { text-decoration-thickness: 3px; }
 
 .band, .poster { justify-content: flex-start; }
 
-.hero {
+.band, .poster { border-top: 1px solid var(--line); }
+
+body:has(.hero) .page::before {
   background: linear-gradient(
     to bottom,
     rgba(7, 7, 8, 0) 0%,
@@ -267,8 +299,7 @@ nav a[aria-current="page"] { text-decoration-thickness: 3px; }
   );
 }
 
-.band, .poster {
-  border-top: 1px solid var(--line);
+body:has(.hero) .band {
   background: linear-gradient(
     100deg,
     rgba(7, 7, 8, 0.92) 0%,
@@ -317,6 +348,8 @@ h1.stroke, .num {
   max-width: 36rem;
 }
 
+.entry .note { display: block; }
+
 .hero-foot {
   display: flex;
   justify-content: space-between;
@@ -353,6 +386,28 @@ h1.stroke, .num {
   color: var(--ink);
   -webkit-text-stroke: 0;
 }
+
+.reel { position: relative; }
+
+.entry {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 6.5rem 1.25rem 2.5rem;
+}
+
+.entry:nth-child(even) {
+  background: linear-gradient(
+    100deg,
+    rgba(38, 39, 44, 0.94) 0%,
+    rgba(38, 39, 44, 0.74) 42%,
+    rgba(38, 39, 44, 0.2) 72%,
+    rgba(38, 39, 44, 0.05) 100%
+  );
+}
+
+.entry .title { text-transform: none; }
 
 .quad {
   display: grid;
@@ -418,8 +473,9 @@ h1.stroke, .num {
 }
 
 .mail {
-  display: inline-block;
+  display: block;
   max-width: 100%;
+  margin: 0;
   font-size: clamp(1.7rem, 5.4vw, 4.6rem);
   font-weight: 700;
   letter-spacing: -0.045em;
@@ -427,6 +483,28 @@ h1.stroke, .num {
   text-transform: none;
   overflow-wrap: anywhere;
 }
+
+.coords {
+  list-style: none;
+  max-width: 32rem;
+  margin: 1.35rem 0 0;
+  padding: 0;
+}
+
+.coords li {
+  padding: 0.95rem 0;
+  border-top: 1px solid var(--line);
+}
+
+.coords li:last-child { border-bottom: 1px solid var(--line); }
+
+.coords a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+
+.coords + .open { margin-top: 1.35rem; }
 
 .links {
   display: flex;
@@ -523,7 +601,7 @@ html:not(.playing) .hold label {
 }
 
 @media (min-width: 52rem) {
-  .hero, .band, .poster { padding: 6rem 2rem 1.8rem; }
+  .hero, .band, .poster, .entry { padding: 6rem 2rem 1.8rem; }
   .topbar { padding: 0 2rem; }
 
   .spec {
