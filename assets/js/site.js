@@ -165,48 +165,12 @@
 })();
 
 (function () {
-  var form = document.getElementById("signal-form");
-  if (!form) {
-    return;
-  }
-
-  var status = document.getElementById("note-status");
-  var held = document.getElementById("note-held");
-  var button = document.getElementById("hold-note");
-
-  button.addEventListener("click", function () {
-    var name = form.elements.name.value.trim();
-    var email = form.elements.email.value.trim();
-    var message = form.elements.message.value.trim();
-
-    if (!name || !email || !message || !form.elements.email.checkValidity()) {
-      status.textContent = "Add a name, a valid email, and a message.";
-      held.hidden = true;
-      return;
-    }
-
-    button.disabled = true;
-    button.textContent = "Saving note";
-    status.textContent = "Saving the note.";
-
-    window.setTimeout(function () {
-      status.textContent = "Note saved on this page. Nothing left the browser.";
-      held.hidden = false;
-      held.textContent = name + "\n" + email + "\n" + message;
-      button.disabled = false;
-      button.textContent = "Save note";
-      form.reset();
-    }, 450);
-  });
-})();
-
-(function () {
   var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   if (reduce || !("IntersectionObserver" in window)) {
     return;
   }
 
-  var nodes = document.querySelectorAll(".band, .card, .job, .colophon, .next, .signal > *");
+  var nodes = document.querySelectorAll(".band, .card, .job, .colophon, .next");
   if (!nodes.length) {
     return;
   }
